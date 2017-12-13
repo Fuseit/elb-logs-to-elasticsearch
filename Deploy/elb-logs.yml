@@ -1,0 +1,57 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  labels:
+    app: elb-logs
+  name: elb-logs
+  namespace: tools
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 0%
+  selector:
+    matchLabels:
+      app: elb-logs
+  template:
+    metadata:
+      labels:
+        app: elb-logs
+    spec:
+      containers:
+      - name: elb-logs
+        image: REPO/elb-logs-to-elasticsearch:TAG
+        env:
+          - name: AWS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: elb-logs
+                key: aws-key
+          - name: AWS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: elb-logs
+                key: aws-secret
+          - name: BUCKET_NAME
+            valueFrom:
+              secretKeyRef:
+                name: elb-logs
+                key: bucket-name
+          - name: PREFIX
+            valueFrom:
+              secretKeyRef:
+                name: elb-logs
+                key: prefix
+          - name: AWS_REGION
+            valueFrom:
+              secretKeyRef:
+                name: elb-logs
+                key: aws-region
+          - name: ELASTICSEARCH_URL
+            valueFrom:
+              secretKeyRef:
+                name: elb-logs
+                key: elasticsearch
