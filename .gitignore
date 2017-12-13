@@ -1,0 +1,4 @@
+# Ignore by default editor folders and python compiled files
+.idea/
+*.pyc
+tmp*
