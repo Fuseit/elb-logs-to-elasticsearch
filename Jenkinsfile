@@ -29,6 +29,7 @@ node('coreos') { //node type defined in Jenkins configuration
                 'deploy/elb-logs.yml' //deploy file
             )
           }
+        }
       },
       'ci-notifications', //slack channel
       'jenkins', //name of the bot
