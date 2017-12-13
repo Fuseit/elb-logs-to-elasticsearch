@@ -30,7 +30,7 @@ spec:
               secretKeyRef:
                 name: elb-logs
                 key: aws-key
-          - name: AWS_KEY
+          - name: AWS_SECRET
             valueFrom:
               secretKeyRef:
                 name: elb-logs
