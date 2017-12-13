@@ -26,7 +26,8 @@ node('coreos') { //node type defined in Jenkins configuration
                 true, //approval needed
                 'dev', //cluster
                 'tools', //namespace
-                'deploy/elb-logs.yml' //deploy file
+                'deploy/elb-logs.yml', //deploy file
+                tag //image tag
             )
           }
         }
